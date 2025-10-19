@@ -37,3 +37,31 @@
 * {
   scrollbar-width: none;
 }
+
+/* Scroll snap styles for enhanced experience */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Ensure smooth transitions between sections */
+body {
+  overflow-x: hidden;
+}
+
+/* Prevent momentum scrolling from interfering with snap */
+@media (pointer: coarse) {
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Enhanced scroll performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

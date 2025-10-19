@@ -1,3 +1,5 @@
+'use client'
+
 import { EnhancedMarquee } from '@/components/ui/enhanced-marquee'
 import { ScrollIndicator } from '@/components/ui/scroll-indicator'
 import { NavBarDemo } from '@/components/ui/tubelight-navbar-demo'
@@ -5,9 +7,18 @@ import { AnimatedCornerBraces } from '@/components/ui/animated-corner-braces'
 import { AnimatedNameSVG } from '@/components/ui/animated-name-svg'
 import { ProfileSection } from '@/components/ui/profile-section'
 import { SkillsTable } from '@/components/ui/skills-table'
+import { useScrollSnap } from '@/hooks/useScrollSnap'
 import Image from 'next/image'
 
 export default function Home() {
+  // Initialize scroll snap with 50px threshold and 300ms duration
+  useScrollSnap({
+    snapThreshold: 50,
+    snapDuration: 300,
+    enabled: true,
+    sectionSelector: 'section'
+  })
+
   return (
     <div className="min-h-screen bg-black">
       {/* Navigation */}
@@ -81,10 +92,10 @@ export default function Home() {
             
             {/* Center Column - Bento Grid */}
             <div className="h-full flex flex-col justify-center p-8">
-              <div className="grid grid-cols-2 h-full max-h-[600px]">
+              <div className="grid grid-cols-2 gap-6 max-h-[800px]">
                 
                 {/* Top Cell - Spans 2 columns */}
-                <div className="col-span-2 flex items-center justify-center p-10 bg-gray-900/30 backdrop-blur-sm rounded-lg border border-gray-800/30">
+                <div className="col-span-2 flex items-center justify-center p-10 bg-gray-900/30 backdrop-blur-sm rounded-lg border border-gray-800/30 h-[300px] mt-8">
                   <AnimatedNameSVG />
                 </div>
                 
@@ -110,28 +121,30 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-white">
-            Featured Projects
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((project) => (
-              <div key={project} className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors">
-                <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900"></div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-white">Project {project}</h3>
-                  <p className="text-gray-300 mb-4">
-                    A innovative web application built with modern technologies to solve real-world problems.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs">React</span>
-                    <span className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs">TypeScript</span>
-                    <span className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs">Node.js</span>
+      <section id="projects" className="h-screen bg-gray-900 relative">
+        <div className="container mx-auto h-full px-4">
+          <div className="h-full flex flex-col justify-center">
+            <h2 className="text-4xl font-bold text-center mb-12 text-white">
+              Featured Projects
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[1, 2, 3].map((project) => (
+                <div key={project} className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors">
+                  <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900"></div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold mb-2 text-white">Project {project}</h3>
+                    <p className="text-gray-300 mb-4">
+                      A innovative web application built with modern technologies to solve real-world problems.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs">React</span>
+                      <span className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs">TypeScript</span>
+                      <span className="px-2 py-1 bg-gray-700 text-gray-200 rounded text-xs">Node.js</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

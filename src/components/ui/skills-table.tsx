@@ -36,7 +36,7 @@ export function SkillsTable() {
             </td>
             <td className="py-3 text-gray-300 leading-relaxed">
               <span className="line-clamp-2">
-                Hoshimachi Suisei, Microservice, Valorant etc.
+                Hoshimachi Suisei, Microservice, Clean design etc.
               </span>
             </td>
           </tr>
@@ -48,7 +48,7 @@ export function SkillsTable() {
             </td>
             <td className="py-3 text-gray-300 italic leading-relaxed">
               <span className="line-clamp-2">
-                "The wound is the place where the Light enters you."
+                "The wound is the place where the Light enters you." - Rumi
               </span>
             </td>
           </tr>
