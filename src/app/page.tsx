@@ -1,22 +1,17 @@
 import { EnhancedMarquee } from '@/components/ui/enhanced-marquee'
 import { ScrollIndicator } from '@/components/ui/scroll-indicator'
+import { NavBarDemo } from '@/components/ui/tubelight-navbar-demo'
+import { AnimatedCornerBraces } from '@/components/ui/animated-corner-braces'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
+      {/* Navigation */}
+      <NavBarDemo />
       {/* Hero Section - 100vh with Marquee */}
       <section id="hero" className="h-screen flex items-center justify-center bg-black relative">
-        {/* Corner Braces */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Top-left corner brace */}
-          <div className="absolute top-8 left-8 w-24 h-24 border-l-4 border-t-4 border-white rounded-tl-3xl opacity-80"></div>
-          {/* Top-right corner brace */}
-          <div className="absolute top-8 right-8 w-24 h-24 border-r-4 border-t-4 border-white rounded-tr-3xl opacity-80"></div>
-          {/* Bottom-left corner brace */}
-          <div className="absolute bottom-8 left-8 w-24 h-24 border-l-4 border-b-4 border-white rounded-bl-3xl opacity-80"></div>
-          {/* Bottom-right corner brace */}
-          <div className="absolute bottom-8 right-8 w-24 h-24 border-r-4 border-b-4 border-white rounded-br-3xl opacity-80"></div>
-        </div>
+        {/* Animated Corner Braces */}
+        <AnimatedCornerBraces />
         
         {/* Halftone Vignette Effect */}
         <div className="absolute inset-0 pointer-events-none">
