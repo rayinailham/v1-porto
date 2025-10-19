@@ -1,12 +1,9 @@
 import { EnhancedMarquee } from '@/components/ui/enhanced-marquee'
 import { ScrollIndicator } from '@/components/ui/scroll-indicator'
-import { NavBar } from '@/components/ui/tubelight-navbar'
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-black">
-      {/* Navigation */}
-      <NavBar />
       {/* Hero Section - 100vh with Marquee */}
       <section id="hero" className="h-screen flex items-center justify-center bg-black relative">
         {/* Corner Braces */}
