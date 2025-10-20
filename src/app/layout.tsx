@@ -1,26 +1,37 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import { ThemeProvider } from 'next-themes'
-import { Poppins, Dancing_Script, Roboto_Flex } from 'next/font/google'
+import { Comfortaa, Nunito, Space_Grotesk, Varela_Round, Roboto_Flex } from 'next/font/google'
 import { LenisProvider } from '@/components/providers/lenis-provider'
 
-const dancingScript = Dancing_Script({
-  subsets: ['latin'],
-  weight: ['700'],
-  variable: '--font-dancing-script',
-})
-
-const poppins = Poppins({
+const comfortaa = Comfortaa({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
+  variable: '--font-comfortaa',
+})
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-nunito',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-space-grotesk',
+})
+
+const varelaRound = Varela_Round({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-varela-round',
 })
 
 const robotoFlex = Roboto_Flex({
   subsets: ['latin'],
   variable: '--font-roboto-flex',
   style: 'normal',
-  axes: ['GRAD', 'opsz', 'slnt', 'wdth', 'XTRA', 'YOPQ', 'YTAS', 'YTDE', 'YTFI', 'YTLC', 'YTUC'],
 })
 
 export const metadata: Metadata = {
@@ -35,7 +46,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dancingScript.variable} ${poppins.variable} ${robotoFlex.variable} bg-white font-sans`}>
+      <body className={`${comfortaa.variable} ${nunito.variable} ${spaceGrotesk.variable} ${varelaRound.variable} ${robotoFlex.variable} bg-white font-nunito`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <LenisProvider>
             {children}

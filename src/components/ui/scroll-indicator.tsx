@@ -28,7 +28,7 @@ export function ScrollIndicator() {
             }}
           >
             <ChevronDown 
-              className="w-6 h-6 text-white opacity-60"
+              className="w-6 h-6 text-black opacity-60 dark:text-white"
               strokeWidth={2}
             />
           </motion.div>

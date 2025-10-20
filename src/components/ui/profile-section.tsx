@@ -18,20 +18,21 @@ export function ProfileSection() {
       </div>
       
       {/* Name */}
-      <h3 className="text-xl font-semibold text-center mb-4">
+      <h3 className="text-xl font-semibold text-center mb-4 text-black">
         Rayina Ilham
       </h3>
       
       {/* Bio */}
-      <div className="text-sm text-gray-300 text-center space-y-4 px-2">
+      <div className="text-sm text-gray-800 text-center space-y-4 px-2">
         <p className="leading-relaxed">
-          <span className="font-medium">Rayina Ilham</span>, born in the countryside, 
-          Grow up with the beach environment!
+          <span className="font-medium">Just a guy</span>, who was born in the countryside chasing dreams!
         </p>
         
         <p className="text-xs leading-relaxed"> 
-          I love designing! from interfaces to systems. I also clip VTuber for fun! 
-          Follow my social media below.
+          I love designing! from interfaces to systems. 
+          <br />I also clip VTuber for fun!
+          <br />
+          <br />Follow my social media below.
         </p>
       </div>
       
@@ -39,7 +40,7 @@ export function ProfileSection() {
       <div className="flex justify-center space-x-4 pt-4">
         <a 
           href="#" 
-          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors border border-gray-700"
+          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200 hover:scale-110 border border-gray-700"
           aria-label="Twitter"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -49,7 +50,7 @@ export function ProfileSection() {
         
         <a 
           href="#" 
-          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors border border-gray-700"
+          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200 hover:scale-110 border border-gray-700"
           aria-label="GitHub"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +60,7 @@ export function ProfileSection() {
         
         <a 
           href="#" 
-          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors border border-gray-700"
+          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200 hover:scale-110 border border-gray-700"
           aria-label="LinkedIn"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -69,7 +70,7 @@ export function ProfileSection() {
         
         <a 
           href="#" 
-          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors border border-gray-700"
+          className="w-8 h-8 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200 hover:scale-110 border border-gray-700"
           aria-label="Instagram"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

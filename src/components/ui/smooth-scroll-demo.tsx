@@ -11,7 +11,7 @@ export function SmoothScrollDemo() {
     const checkLenis = () => {
       // Try to find the Lenis instance from window or create a new one
       if (typeof window !== 'undefined') {
-        const lenisInstance = (window as any).lenis
+        const lenisInstance = (window as Window & { lenis?: Lenis }).lenis
         if (lenisInstance) {
           lenisRef.current = lenisInstance
         }

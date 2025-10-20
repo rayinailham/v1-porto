@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, createContext, useRef, useEffect } from 'react'
+import { useContext, createContext } from 'react'
 import Lenis from 'lenis'
 
 interface LenisContextType {

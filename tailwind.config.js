@@ -13,8 +13,10 @@ module.exports = {
         foreground: 'var(--foreground)',
       },
       fontFamily: {
-        'dancing-script': ['var(--font-dancing-script)'],
-        'poppins': ['var(--font-poppins)'],
+        'comfortaa': ['var(--font-comfortaa)'],
+        'nunito': ['var(--font-nunito)'],
+        'space-grotesk': ['var(--font-space-grotesk)'],
+        'varela-round': ['var(--font-varela-round)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

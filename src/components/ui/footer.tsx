@@ -23,7 +23,7 @@ export function Footer() {
             {/* Let's Connect */}
             <div>
               <h3 className="text-2xl font-bold text-white mb-2">
-                Let's Connect
+                Let&#39;s Connect
               </h3>
             </div>
 

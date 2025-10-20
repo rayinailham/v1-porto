@@ -1,15 +1,11 @@
 'use client'
 
-import { EnhancedMarquee } from '@/components/ui/enhanced-marquee'
 import { ScrollIndicator } from '@/components/ui/scroll-indicator'
-import { NavBarDemo } from '@/components/ui/tubelight-navbar-demo'
 import { AnimatedCornerBraces } from '@/components/ui/animated-corner-braces'
 import { ProfileSection } from '@/components/ui/profile-section'
 import { SkillsTable } from '@/components/ui/skills-table'
-import { AnimatedSignature } from '@/components/ui/animated-signature'
 import { LeftBentoContainer, RightBentoContainer } from '@/components/ui/bento-container'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
-import Image from 'next/image'
 
 export default function Home() {
   // Initialize scroll snap with 50px threshold and 300ms duration
@@ -22,21 +18,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <NavBarDemo />
       {/* Hero Section - 100vh with Marquee */}
       <section id="hero" className="h-screen flex items-center justify-center bg-gray-50 relative">
         {/* Animated Corner Braces */}
         <AnimatedCornerBraces />
         
-        {/* Halftone Vignette Effect */}
+        {/* Halftone Effect */}
         <div className="absolute inset-0 pointer-events-none">
-          {/* Subtler vignette gradient for light theme */}
-          <div className="absolute inset-0" 
-            style={{
-              background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.05) 150%, rgba(0,0,0,0.1) 100%)'
-            }}
-          ></div>
           {/* Halftone dot pattern - barely visible small dots */}
           <div className="absolute inset-0" 
             style={{
@@ -63,25 +51,12 @@ export default function Home() {
             }}
           ></div>
         </div>
-        <EnhancedMarquee 
-          text="A Diamond In The Rough!" 
-          fontSize="md"
-          duration={80}
-          repeat={20}
-          strokeWidth="1.5px"
-          enableVariableProximity={true}
-          proximityRadius={250}
-          proximityFalloff="gaussian"
-          fromFontVariationSettings="'opsz' 9, 'GRAD' 0"
-          toFontVariationSettings="'opsz' 40, 'GRAD' 200"
-        />
-        
         {/* Scroll Indicator */}
         <ScrollIndicator />
       </section>
 
       {/* About Me Section */}
-      <section id="about" className="h-screen bg-gray-50 relative">
+      <section id="about" className="h-screen bg-gray-50 relative pt-16">
         {/* 3-column layout container */}
         <div className="container mx-auto h-full px-4">
           <div className="grid grid-cols-3 h-full gap-6" style={{ gridTemplateColumns: '1fr 2fr 1fr' }}>
@@ -90,16 +65,16 @@ export default function Home() {
             <LeftBentoContainer />
             
             {/* Center Column - Bento Grid */}
-            <div className="h-full flex flex-col justify-center p-8">
+            <div className="h-full flex flex-col justify-center pt-8 pb-8">
               <div className="grid grid-cols-2 h-full">
                 
                 {/* Top Cell - Spans 2 columns */}
-                <div className="col-span-2 flex items-center justify-center p-10 bg-white/50 backdrop-blur-sm rounded-lg border border-gray-200/50">
-                  <AnimatedSignature />
+                <div className="col-span-2 flex items-center justify-center bg-[#aeaba818] border border-[#efefef] backdrop-blur-sm rounded-2xl" style={{ height: '350px' }}>
+                 
                 </div>
                 
                 {/* Bottom Left Cell - Profile */}
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center rounded-lg">
                   <ProfileSection />
                 </div>
                 
@@ -118,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="h-screen bg-gray-100 relative">
+      <section id="projects" className="h-screen bg-[#aeaba818] relative">
         <div className="container mx-auto h-full px-4">
           <div className="h-full flex flex-col justify-center">
             <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
@@ -155,8 +130,8 @@ export default function Home() {
             </h2>
             <div className="max-w-2xl mx-auto text-center">
               <p className="text-xl text-gray-600 mb-8">
-                I'm always interested in hearing about new opportunities and exciting projects.
-                Feel free to reach out if you'd like to collaborate!
+                I&#39;m always interested in hearing about new opportunities and exciting projects.
+                Feel free to reach out if you&#39;d like to collaborate!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">

@@ -54,7 +54,7 @@ export function LenisProvider({ children, options = {} }: LenisProviderProps) {
 
     // Make Lenis instance globally available for scroll snap hook
     if (typeof window !== 'undefined') {
-      (window as any).lenis = lenisRef.current
+      ;(window as Window & { lenis?: Lenis }).lenis = lenisRef.current
     }
 
     // Connect to requestAnimationFrame loop
@@ -73,7 +73,7 @@ export function LenisProvider({ children, options = {} }: LenisProviderProps) {
         lenisRef.current.destroy()
       }
       if (typeof window !== 'undefined') {
-        delete (window as any).lenis
+        delete (window as Window & { lenis?: Lenis }).lenis
       }
     }
   }, [options])

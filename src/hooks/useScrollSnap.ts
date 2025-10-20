@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useCallback } from 'react'
+import Lenis from 'lenis'
 
 interface ScrollSnapOptions {
   snapThreshold?: number // Distance from top to trigger snap (default: 75px)
@@ -15,7 +16,7 @@ export function useScrollSnap({
   enabled = true,
   sectionSelector = 'section'
 }: ScrollSnapOptions = {}) {
-  const lenisRef = useRef<any>(null)
+  const lenisRef = useRef<Lenis | null>(null)
   const isScrollingRef = useRef(false)
   const scrollTimeoutRef = useRef<NodeJS.Timeout>()
   const lastScrollTimeRef = useRef(0)
@@ -26,15 +27,18 @@ export function useScrollSnap({
     if (lenisRef.current) return lenisRef.current
     
     // Try to get Lenis from window (if globally available)
-    if (typeof window !== 'undefined' && (window as any).lenis) {
-      lenisRef.current = (window as any).lenis
-      return lenisRef.current
+    if (typeof window !== 'undefined') {
+      const windowLenis = (window as Window & { lenis?: Lenis }).lenis
+      if (windowLenis) {
+        lenisRef.current = windowLenis
+        return lenisRef.current
+      }
     }
     
     // Try to find Lenis instance in the DOM
     const lenisElements = document.querySelectorAll('[data-lenis]')
     if (lenisElements.length > 0) {
-      const lenisElement = lenisElements[0] as any
+      const lenisElement = lenisElements[0] as HTMLElement & { lenis?: Lenis }
       if (lenisElement.lenis) {
         lenisRef.current = lenisElement.lenis
         return lenisRef.current
@@ -132,7 +136,7 @@ export function useScrollSnap({
     // Store Lenis instance globally for easy access
     const lenis = getLenisInstance()
     if (lenis) {
-      (window as any).lenis = lenis
+      (window as Window & { lenis?: Lenis }).lenis = lenis
     }
 
     // Add scroll event listener
