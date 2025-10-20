@@ -35,8 +35,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${dancingScript.variable} ${poppins.variable} ${robotoFlex.variable} bg-black font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+      <body className={`${dancingScript.variable} ${poppins.variable} ${robotoFlex.variable} bg-white font-sans`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <LenisProvider>
             {children}
           </LenisProvider>

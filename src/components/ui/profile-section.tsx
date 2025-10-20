@@ -13,6 +13,7 @@ export function ProfileSection() {
           fill
           className="object-cover rounded-full border-2 border-gray-700"
           priority
+          unoptimized
         />
       </div>
       

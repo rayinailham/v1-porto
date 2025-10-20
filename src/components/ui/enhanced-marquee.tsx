@@ -64,7 +64,7 @@ export const EnhancedMarquee = React.forwardRef<HTMLDivElement, EnhancedMarqueeP
               "font-light tracking-tight pb-4 cursor-default"
             )}
             style={{
-              WebkitTextStroke: `${strokeWidth} white`,
+              WebkitTextStroke: `${strokeWidth} ${isDark ? 'white' : 'black'}`,
               color: 'transparent',
             }}
           />
@@ -79,7 +79,7 @@ export const EnhancedMarquee = React.forwardRef<HTMLDivElement, EnhancedMarqueeP
             "font-light text-transparent tracking-tight font-poppins pb-4 cursor-default"
           )}
           style={{
-            WebkitTextStroke: `${strokeWidth} white`,
+            WebkitTextStroke: `${strokeWidth} ${isDark ? 'white' : 'black'}`,
           }}
         >
           {text}
@@ -96,23 +96,47 @@ export const EnhancedMarquee = React.forwardRef<HTMLDivElement, EnhancedMarqueeP
         )}
         {...props}
       >
-        <motion.div
-          className="flex whitespace-nowrap"
-          animate={{ 
-            x: ["0%", "-50%"]
-          }}
-          transition={{ 
-            repeat: Number.POSITIVE_INFINITY, 
-            ease: "linear", 
-            duration,
-          }}
-        >
-          {[...Array(repeat * 2)].map((_, index) => (
-            <div key={index} className="flex items-center px-6">
-              {renderTextContent(text, index)}
-            </div>
-          ))}
-        </motion.div>
+        <div className="flex whitespace-nowrap">
+          {/* First set of content */}
+          <motion.div 
+            className="flex items-center"
+            animate={{ 
+              x: [0, "-100%"]
+            }}
+            transition={{ 
+              repeat: Number.POSITIVE_INFINITY, 
+              ease: "linear", 
+              duration: duration,
+              repeatType: "loop"
+            }}
+          >
+            {[...Array(repeat)].map((_, index) => (
+              <div key={`first-${index}`} className="flex items-center px-6">
+                {renderTextContent(text, index)}
+              </div>
+            ))}
+          </motion.div>
+          
+          {/* Second set of content for seamless looping */}
+          <motion.div 
+            className="flex items-center"
+            animate={{ 
+              x: [0, "-100%"]
+            }}
+            transition={{ 
+              repeat: Number.POSITIVE_INFINITY, 
+              ease: "linear", 
+              duration: duration,
+              repeatType: "loop"
+            }}
+          >
+            {[...Array(repeat)].map((_, index) => (
+              <div key={`second-${index}`} className="flex items-center px-6">
+                {renderTextContent(text, index + repeat)}
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     )
   }

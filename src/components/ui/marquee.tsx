@@ -53,6 +53,8 @@ export const Marquee = React.forwardRef<HTMLDivElement, MarqueeProps>(
             repeat: Number.POSITIVE_INFINITY, 
             ease: "linear", 
             duration,
+            repeatType: "loop",
+            repeatDelay: 0
           }}
         >
           {[...Array(repeat * 2)].map((_, index) => (

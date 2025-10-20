@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -30,6 +29,17 @@ export function NavBar({ items, className }: NavBarProps) {
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
 
   // Scroll-based active state
   useEffect(() => {
@@ -65,20 +75,24 @@ export function NavBar({ items, className }: NavBarProps) {
         className,
       )}
     >
-      <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+      <div className="flex items-center gap-3 bg-white/80 border border-gray-200/50 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
 
           return (
-            <Link
+            <button
               key={item.name}
-              href={item.url}
-              onClick={() => setActiveTab(item.name)}
+              onClick={() => {
+                const sectionId = item.url.replace('#', '')
+                scrollToSection(sectionId)
+                setActiveTab(item.name)
+              }}
               className={cn(
                 "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-all duration-300",
-                "text-gray-400 hover:text-white hover:bg-white/10",
-                isActive && "bg-white/20 text-white shadow-lg",
+                "text-gray-600 hover:text-gray-900 hover:bg-gray-100/10",
+                isActive && "bg-gray-200/50 text-gray-900 shadow-lg",
+                "bg-transparent border-none outline-none"
               )}
             >
               <span className="hidden md:inline">{item.name}</span>
@@ -103,7 +117,7 @@ export function NavBar({ items, className }: NavBarProps) {
                   </div>
                 </motion.div>
               )}
-            </Link>
+            </button>
           )
         })}
       </div>

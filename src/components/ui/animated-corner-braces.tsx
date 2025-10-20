@@ -79,7 +79,7 @@ export const AnimatedCornerBraces = () => {
     <div className="absolute inset-0 pointer-events-none">
       {/* Top-left corner brace */}
       <div 
-        className="absolute top-8 left-8 w-24 h-24 border-l-4 border-t-4 border-white rounded-tl-3xl"
+        className="absolute top-8 left-8 w-24 h-24 border-l-4 border-t-4 border-gray-800 rounded-tl-3xl"
         style={{
           opacity: getOpacity(),
           transform: getTransform('top-left'),
@@ -92,7 +92,7 @@ export const AnimatedCornerBraces = () => {
       
       {/* Top-right corner brace */}
       <div 
-        className="absolute top-8 right-8 w-24 h-24 border-r-4 border-t-4 border-white rounded-tr-3xl"
+        className="absolute top-8 right-8 w-24 h-24 border-r-4 border-t-4 border-gray-800 rounded-tr-3xl"
         style={{
           opacity: getOpacity(),
           transform: getTransform('top-right'),
@@ -105,7 +105,7 @@ export const AnimatedCornerBraces = () => {
       
       {/* Bottom-left corner brace */}
       <div 
-        className="absolute bottom-8 left-8 w-24 h-24 border-l-4 border-b-4 border-white rounded-bl-3xl"
+        className="absolute bottom-8 left-8 w-24 h-24 border-l-4 border-b-4 border-gray-800 rounded-bl-3xl"
         style={{
           opacity: getOpacity(),
           transform: getTransform('bottom-left'),
@@ -118,7 +118,7 @@ export const AnimatedCornerBraces = () => {
       
       {/* Bottom-right corner brace */}
       <div 
-        className="absolute bottom-8 right-8 w-24 h-24 border-r-4 border-b-4 border-white rounded-br-3xl"
+        className="absolute bottom-8 right-8 w-24 h-24 border-r-4 border-b-4 border-gray-800 rounded-br-3xl"
         style={{
           opacity: getOpacity(),
           transform: getTransform('bottom-right'),
