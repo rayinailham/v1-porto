@@ -36,12 +36,12 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0" ref={ref}>
         <ImageTrail
           containerRef={ref}
-          interval={100}
+          interval={150}
           rotationRange={25}
           animationSequence={[
-            [{ scale: 1.2, opacity: 0.8 }, { duration: 0.3, ease: "circOut" }],
-            [{ scale: 0.8, opacity: 0.4 }, { duration: 0.4, ease: "circIn" }],
-            [{ scale: 0, opacity: 0 }, { duration: 0.3, ease: "circIn" }],
+            [{ scale: 1.2, opacity: 0.8 }, { duration: 0.5, ease: "circOut" }],
+            [{ scale: 0.9, opacity: 0.6 }, { duration: 0.8, ease: "circIn" }],
+            [{ scale: 0, opacity: 0 }, { duration: 0.5, ease: "circIn" }],
           ]}
         >
           {images.map((url, index) => (

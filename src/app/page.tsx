@@ -7,6 +7,7 @@ import { LeftBentoContainer, RightBentoContainer } from '@/components/ui/bento-c
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 import { motion } from 'framer-motion'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
+import ProjectSection from '@/components/project-section'
 
 // Top Bar Component with scroll animation
 const TopBar = () => {
@@ -92,33 +93,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="h-screen bg-[#aeaba818] relative">
-        <div className="container mx-auto h-full px-4">
-          <div className="h-full flex flex-col justify-center">
-            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-              Featured Projects
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {[1, 2, 3].map((project) => (
-                <div key={project} className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-gray-300 transition-colors shadow-sm hover:shadow-md">
-                  <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200"></div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900">Project {project}</h3>
-                    <p className="text-gray-600 mb-4">
-                      A innovative web application built with modern technologies to solve real-world problems.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">React</span>
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">TypeScript</span>
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">Node.js</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProjectSection />
 
       {/* Contact Section */}
       <section id="contact" className="h-screen bg-gray-50 relative">

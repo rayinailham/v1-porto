@@ -44,7 +44,7 @@ const ImageTrail = ({
     [{ scale: 1.3 }, { duration: 0.2, ease: "circOut" }],
     [{ scale: 0 }, { duration: 0.6, ease: "circIn" }],
   ],
-  interval = 500,
+  interval = 300,
 }: ImageTrailProps) => {
   const trailRef = useRef<TrailItem[]>([])
   const [isVisible, setIsVisible] = useState(true)
