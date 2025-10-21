@@ -8,15 +8,15 @@ import { ImageTrail } from '@/components/ui/image-trail'
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null)
 
-  // Unsplash images that definitely exist
+  // Local optimized WebP images from public/image-trails folder
   const images = [
-    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
-    "https://images.unsplash.com/photo-1426604966848-d7adac402bff",
-    "https://images.unsplash.com/photo-1472214103451-9374bd1c798e",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
-    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d",
-  ].map(url => `${url}?auto=format&fit=crop&w=150&q=80`)
+    "/image-trails/MiComet image 3.webp",
+    "/image-trails/Suichan image 4.webp",
+    "/image-trails/Suichan image 5.webp",
+    "/image-trails/Suichan image 6.webp",
+    "/image-trails/MiComet image 7.webp",
+    "/image-trails/Suichan image 8.webp",
+  ]
 
   return (
     <section id="hero" className="h-screen flex items-center justify-center bg-gray-50 relative">
@@ -30,12 +30,13 @@ const HeroSection = () => {
           {images.map((url, index) => (
             <div
               key={index}
-              className="flex relative overflow-hidden w-16 h-16 rounded-lg opacity-70"
+              className="flex relative overflow-hidden w-32 h-32 rounded-lg opacity-70 select-none pointer-events-none"
             >
               <img
                 src={url}
                 alt={`Trail image ${index + 1}`}
-                className="object-cover absolute inset-0"
+                className="object-cover absolute inset-0 select-none pointer-events-none"
+                draggable="false"
               />
             </div>
           ))}
@@ -75,11 +76,11 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 text-center">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold select-none bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-500 mb-6">
+      <div className="relative z-10 text-center pointer-events-none">
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold select-none cursor-default bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-500 mb-6">
           Rayin
         </h1>
-        <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto cursor-default">
           Creative developer crafting exceptional digital experiences
         </p>
       </div>

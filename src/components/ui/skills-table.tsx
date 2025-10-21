@@ -1,8 +1,35 @@
 'use client'
 
+import { motion } from 'framer-motion'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
+
 export function SkillsTable() {
+  const { ref, controls } = useScrollReveal()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: -50
+    },
+    visible: {
+      opacity: 1,
+      x: 0
+    }
+  }
+
   return (
-    <div className="text-white text-sm">
+    <motion.div
+      ref={ref}
+      className="text-white text-sm"
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      transition={{
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.2
+      }}
+    >
       <table className="w-full border-collapse">
         <tbody>
           {/* Skills Row */}
@@ -36,7 +63,7 @@ export function SkillsTable() {
             </td>
             <td className="py-3 text-gray-700 leading-relaxed">
               <span className="line-clamp-2">
-                Hoshimachi Suisei, Microservice, Clean design etc.
+                Hoshimachi Suisei, Microservice, Quotes, Clean design etc.
               </span>
             </td>
           </tr>
@@ -54,6 +81,6 @@ export function SkillsTable() {
           </tr>
         </tbody>
       </table>
-    </div>
+    </motion.div>
   )
 }

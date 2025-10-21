@@ -5,6 +5,42 @@ import { ProfileSection } from '@/components/ui/profile-section'
 import { SkillsTable } from '@/components/ui/skills-table'
 import { LeftBentoContainer, RightBentoContainer } from '@/components/ui/bento-container'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
+import { motion } from 'framer-motion'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
+
+// Top Bar Component with scroll animation
+const TopBar = () => {
+  const { ref, controls } = useScrollReveal()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: -30
+    },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      className="col-span-2 flex items-center justify-center bg-[#aeaba818] border border-[#efefef] backdrop-blur-sm rounded-2xl"
+      style={{ height: '350px' }}
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      transition={{
+        duration: 0.7,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.1
+      }}
+    >
+      {/* You can add content here if needed */}
+    </motion.div>
+  )
+}
 
 export default function Home() {
   // Initialize scroll snap with optimized settings for smoother transition
@@ -34,9 +70,7 @@ export default function Home() {
               <div className="grid grid-cols-2 h-full">
                 
                 {/* Top Cell - Spans 2 columns */}
-                <div className="col-span-2 flex items-center justify-center bg-[#aeaba818] border border-[#efefef] backdrop-blur-sm rounded-2xl" style={{ height: '350px' }}>
-                 
-                </div>
+                <TopBar />
                 
                 {/* Bottom Left Cell - Profile */}
                 <div className="flex flex-col justify-center rounded-lg">

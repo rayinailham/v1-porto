@@ -1,4 +1,4 @@
-import { Children, useCallback, useEffect, useMemo, useRef } from "react"
+import { Children, useCallback, useEffect, useMemo, useRef, useState } from "react"
 import {
   AnimationSequence,
   motion,
@@ -41,20 +41,45 @@ const ImageTrail = ({
   rotationRange = 15,
   containerRef,
   animationSequence = [
-    [{ scale: 1.2 }, { duration: 0.1, ease: "circOut" }],
-    [{ scale: 0 }, { duration: 0.5, ease: "circIn" }],
+    [{ scale: 1.3 }, { duration: 0.2, ease: "circOut" }],
+    [{ scale: 0 }, { duration: 0.6, ease: "circIn" }],
   ],
-  interval = 100,
+  interval = 120,
 }: ImageTrailProps) => {
   const trailRef = useRef<TrailItem[]>([])
-
+  const [isVisible, setIsVisible] = useState(true)
   const lastAddedTimeRef = useRef<number>(0)
   const { position: mousePosition, vector: mouseVector } =
-    useMouseVector(containerRef)
+    useMouseVector(containerRef, isVisible)
   const lastMousePosRef = useRef(mousePosition)
   const currentIndexRef = useRef(0)
   // Convert children to array for random selection
   const childrenArray = useMemo(() => Children.toArray(children), [children])
+
+  // Check if container is visible in viewport
+  useEffect(() => {
+    if (!containerRef?.current) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting)
+        
+        // Clear all trail items when not visible
+        if (!entry.isIntersecting) {
+          trailRef.current = []
+        }
+      },
+      {
+        threshold: 0.1 // Trigger when 10% of the element is visible
+      }
+    )
+
+    observer.observe(containerRef.current)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [containerRef])
 
   // Batch updates using useCallback
   const addToTrail = useCallback(
@@ -90,6 +115,9 @@ const ImageTrail = ({
   }, [])
 
   useAnimationFrame((time, delta) => {
+    // Skip if container is not visible
+    if (!isVisible) return
+
     // Skip if mouse hasn't moved
     if (
       lastMousePosRef.current.x === mousePosition.x &&

@@ -1,6 +1,8 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'framer-motion'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 interface BentoCellProps {
   children: React.ReactNode
@@ -17,8 +19,32 @@ const BentoCell: React.FC<BentoCellProps> = ({ children, className = '' }) => {
 }
 
 export const LeftBentoContainer: React.FC = () => {
+  const { ref, controls } = useScrollReveal()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: -50
+    },
+    visible: {
+      opacity: 1,
+      x: 0
+    }
+  }
+
   return (
-    <div className="h-full flex flex-col pt-8 gap-4 pb-12">
+    <motion.div
+      ref={ref}
+      className="h-full flex flex-col pt-8 gap-4 pb-12"
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.1
+      }}
+    >
       {/* Row 1: 1 cell taking all 3 columns */}
       <div className="grid grid-cols-3 flex-1">
         <BentoCell className="col-span-3 h-full">
@@ -75,13 +101,37 @@ export const LeftBentoContainer: React.FC = () => {
           <></>
         </BentoCell>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
 export const RightBentoContainer: React.FC = () => {
+  const { ref, controls } = useScrollReveal()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: 50
+    },
+    visible: {
+      opacity: 1,
+      x: 0
+    }
+  }
+
   return (
-    <div className="h-full flex flex-col pt-8 gap-4 pb-12">
+    <motion.div
+      ref={ref}
+      className="h-full flex flex-col pt-8 gap-4 pb-12"
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: 0.1
+      }}
+    >
       {/* Row 1: 1 cell taking all 3 columns */}
       <div className="grid grid-cols-3 flex-1">
         <BentoCell className="col-span-3 h-full">
@@ -138,6 +188,6 @@ export const RightBentoContainer: React.FC = () => {
           <></>
         </BentoCell>
       </div>
-    </div>
+    </motion.div>
   )
 }

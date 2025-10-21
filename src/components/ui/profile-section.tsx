@@ -1,10 +1,35 @@
 'use client'
 
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 export function ProfileSection() {
+  const { ref, controls } = useScrollReveal()
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: 50
+    },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
+  }
+
   return (
-    <div className="text-white space-y-4 py-4">
+    <motion.div
+      ref={ref}
+      className="text-white space-y-4 py-4"
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+      transition={{
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+    >
       {/* Profile Picture */}
       <div className="relative w-24 h-24 mx-auto mb-6">
         <Image
@@ -25,12 +50,13 @@ export function ProfileSection() {
       {/* Bio */}
       <div className="text-sm text-gray-800 text-center space-y-4 px-2">
         <p className="leading-relaxed">
-          <span className="font-medium">Just a guy</span>, who was born in the countryside chasing dreams!
+          <span className="font-medium">I love designing</span>, from interfaces to systems!
         </p>
         
         <p className="text-xs leading-relaxed"> 
-          I love designing! from interfaces to systems. 
-          <br />I also clip VTuber for fun!
+          I can use expressjs, honojs, nextjs 
+          <br />and currently learning Go for backend.
+          <br />I also clip VTuber for fun using Premiere Pro!
           <br />
           <br />Follow my social media below.
         </p>
@@ -78,6 +104,6 @@ export function ProfileSection() {
           </svg>
         </a>
       </div>
-    </div>
+    </motion.div>
   )
 }
