@@ -44,12 +44,12 @@ const ImageTrail = ({
     [{ scale: 1.3 }, { duration: 0.2, ease: "circOut" }],
     [{ scale: 0 }, { duration: 0.6, ease: "circIn" }],
   ],
-  interval = 120,
+  interval = 500,
 }: ImageTrailProps) => {
   const trailRef = useRef<TrailItem[]>([])
   const [isVisible, setIsVisible] = useState(true)
   const lastAddedTimeRef = useRef<number>(0)
-  const { position: mousePosition, vector: mouseVector } =
+  const { position: mousePosition } =
     useMouseVector(containerRef, isVisible)
   const lastMousePosRef = useRef(mousePosition)
   const currentIndexRef = useRef(0)
@@ -70,7 +70,7 @@ const ImageTrail = ({
         }
       },
       {
-        threshold: 0.1 // Trigger when 10% of the element is visible
+        threshold: 0.2 // Trigger when 10% of the element is visible
       }
     )
 
@@ -114,7 +114,7 @@ const ImageTrail = ({
     }
   }, [])
 
-  useAnimationFrame((time, delta) => {
+  useAnimationFrame((time) => {
     // Skip if container is not visible
     if (!isVisible) return
 
@@ -164,6 +164,7 @@ const TrailItem = ({ item, onComplete }: TrailItemProps) => {
     animate(sequence as AnimationSequence).then(() => {
       onComplete(item.id)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

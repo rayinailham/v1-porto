@@ -31,8 +31,6 @@ export const useMouseVector = (
     // Don't set up listeners if not active
     if (!isActive) return
 
-    let lastPosition = { x: 0, y: 0 }
-
     const handleMouseMove = (ev: MouseEvent) => {
       updatePosition(ev.clientX, ev.clientY)
     }

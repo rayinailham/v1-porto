@@ -39,7 +39,7 @@ export function SkillsTable() {
             </td>
             <td className="py-3 text-gray-700 leading-relaxed">
               <span className="line-clamp-2">
-                Web Dev, System Design, Clipping, Leadership etc.
+                Web Dev, System Design, Clipping, Leadership, etc.
               </span>
             </td>
           </tr>
@@ -51,7 +51,7 @@ export function SkillsTable() {
             </td>
             <td className="py-3 text-gray-700 leading-relaxed">
               <span className="line-clamp-2">
-                VS Code, Premiere Pro, Figma, Next.js, Express.js etc.
+                VS Code, Premiere Pro, Figma, Next.js, Express.js, etc.
               </span>
             </td>
           </tr>
@@ -63,7 +63,7 @@ export function SkillsTable() {
             </td>
             <td className="py-3 text-gray-700 leading-relaxed">
               <span className="line-clamp-2">
-                Hoshimachi Suisei, Microservice, Quotes, Clean design etc.
+                Hoshimachi Suisei, Microservice, Quotes, Clean design, etc.
               </span>
             </td>
           </tr>

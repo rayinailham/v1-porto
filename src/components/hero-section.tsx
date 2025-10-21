@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from "react"
+import { useRef, useEffect, useMemo } from "react"
 import { ScrollIndicator } from '@/components/ui/scroll-indicator'
 import { AnimatedCornerBraces } from '@/components/ui/animated-corner-braces'
 import { ImageTrail } from '@/components/ui/image-trail'
@@ -8,35 +8,53 @@ import { ImageTrail } from '@/components/ui/image-trail'
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null)
 
-  // Local optimized WebP images from public/image-trails folder
-  const images = [
+  // All 10 optimized WebP images from public/image-trails folder
+  const images = useMemo(() => [
+    "/image-trails/FubuMiComet image 9.webp",
     "/image-trails/MiComet image 3.webp",
+    "/image-trails/MiComet image 7.webp",
+    "/image-trails/MiComet image 10.webp",
     "/image-trails/Suichan image 4.webp",
     "/image-trails/Suichan image 5.webp",
     "/image-trails/Suichan image 6.webp",
-    "/image-trails/MiComet image 7.webp",
     "/image-trails/Suichan image 8.webp",
-  ]
+    "/image-trails/Suichan image 12.webp",
+    "/image-trails/Suichan image 13.webp",
+  ], [])
+
+  // Preload images for smoother performance
+  useEffect(() => {
+    images.forEach((src) => {
+      const img = new Image()
+      img.src = src
+    })
+  }, [images])
 
   return (
     <section id="hero" className="h-screen flex items-center justify-center bg-gray-50 relative">
       {/* ImageTrail Background */}
       <div className="absolute inset-0 z-0" ref={ref}>
-        <ImageTrail 
+        <ImageTrail
           containerRef={ref}
-          interval={150}
-          rotationRange={20}
+          interval={100}
+          rotationRange={25}
+          animationSequence={[
+            [{ scale: 1.2, opacity: 0.8 }, { duration: 0.3, ease: "circOut" }],
+            [{ scale: 0.8, opacity: 0.4 }, { duration: 0.4, ease: "circIn" }],
+            [{ scale: 0, opacity: 0 }, { duration: 0.3, ease: "circIn" }],
+          ]}
         >
           {images.map((url, index) => (
             <div
               key={index}
-              className="flex relative overflow-hidden w-32 h-32 rounded-lg opacity-70 select-none pointer-events-none"
+              className="flex relative overflow-hidden w-28 h-28 rounded-xl opacity-80 select-none pointer-events-none"
             >
               <img
                 src={url}
                 alt={`Trail image ${index + 1}`}
                 className="object-cover absolute inset-0 select-none pointer-events-none"
-                draggable="false"
+                draggable={false}
+                loading="eager"
               />
             </div>
           ))}
