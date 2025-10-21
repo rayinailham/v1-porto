@@ -88,9 +88,10 @@ export function useScrollSnap({
       offset: 0,
       duration: snapDuration / 1000, // Convert to seconds
       easing: (t: number) => {
-        // Custom easing function for natural snap feel
-        const easeOutQuart = 1 - Math.pow(1 - t, 4)
-        return easeOutQuart
+        // Softer easing function for gentler snap feel
+        // Using ease-out-cubic for more natural deceleration
+        const easeOutCubic = 1 - Math.pow(1 - t, 3)
+        return easeOutCubic
       }
     })
 
@@ -114,17 +115,17 @@ export function useScrollSnap({
 
     // Debounce scroll handling
     scrollTimeoutRef.current = setTimeout(() => {
-      // Only snap if scroll ended recently (within 150ms)
+      // Only snap if scroll ended recently (within 100ms for quicker response)
       const timeSinceLastScroll = Date.now() - lastScrollTimeRef.current
       
-      if (timeSinceLastScroll >= 150) {
+      if (timeSinceLastScroll >= 100) {
         const { section } = findClosestSection()
         
         if (section) {
           snapToSection(section)
         }
       }
-    }, 150)
+    }, 100)
   }, [enabled, findClosestSection, snapToSection])
 
   // Initialize scroll snap functionality

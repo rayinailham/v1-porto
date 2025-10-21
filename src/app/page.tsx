@@ -1,59 +1,24 @@
 'use client'
 
-import { ScrollIndicator } from '@/components/ui/scroll-indicator'
-import { AnimatedCornerBraces } from '@/components/ui/animated-corner-braces'
+import HeroSection from '@/components/hero-section'
 import { ProfileSection } from '@/components/ui/profile-section'
 import { SkillsTable } from '@/components/ui/skills-table'
 import { LeftBentoContainer, RightBentoContainer } from '@/components/ui/bento-container'
 import { useScrollSnap } from '@/hooks/useScrollSnap'
 
 export default function Home() {
-  // Initialize scroll snap with 50px threshold and 300ms duration
+  // Initialize scroll snap with optimized settings for smoother transition
   useScrollSnap({
-    snapThreshold: 50,
-    snapDuration: 300,
+    snapThreshold: 300,  // Increased threshold for easier triggering
+    snapDuration: 500,   // Slightly longer duration for smoother feel
     enabled: true,
     sectionSelector: 'section'
   })
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - 100vh with Marquee */}
-      <section id="hero" className="h-screen flex items-center justify-center bg-gray-50 relative">
-        {/* Animated Corner Braces */}
-        <AnimatedCornerBraces />
-        
-        {/* Halftone Effect */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Halftone dot pattern - barely visible small dots */}
-          <div className="absolute inset-0" 
-            style={{
-              backgroundImage: `
-                radial-gradient(circle, rgba(0,0,0,0.03) 1px, transparent 1px),
-                radial-gradient(circle, rgba(0,0,0,0.02) 1.5px, transparent 1.5px)
-              `,
-              backgroundSize: '12px 12px, 24px 24px',
-              backgroundPosition: '0 0, 6px 6px',
-              mixBlendMode: 'multiply'
-            }}
-          ></div>
-          {/* Additional halftone texture - small dots */}
-          <div className="absolute inset-0" 
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 25% 25%, rgba(0,0,0,0.04) 1.2px, transparent 1.2px),
-                radial-gradient(circle at 75% 25%, rgba(0,0,0,0.03) 1.8px, transparent 1.8px),
-                radial-gradient(circle at 25% 75%, rgba(0,0,0,0.03) 1.8px, transparent 1.8px),
-                radial-gradient(circle at 75% 75%, rgba(0,0,0,0.04) 1.2px, transparent 1.2px)
-              `,
-              backgroundSize: '30px 30px',
-              mixBlendMode: 'multiply'
-            }}
-          ></div>
-        </div>
-        {/* Scroll Indicator */}
-        <ScrollIndicator />
-      </section>
+      {/* Hero Section */}
+      <HeroSection />
 
       {/* About Me Section */}
       <section id="about" className="h-screen bg-gray-50 relative pt-16">

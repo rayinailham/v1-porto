@@ -42,7 +42,7 @@ export function LenisProvider({ children, options = {} }: LenisProviderProps) {
       gestureDirection: 'vertical' as const,
       smooth: true,
       mouseMultiplier: 1,
-      smoothTouch: false,
+      smoothTouch: true,
       touchMultiplier: 2,
       infinite: false,
       autoResize: true,
