@@ -10,10 +10,6 @@ const HeroSection = () => {
 
   // All 10 optimized WebP images from public/image-trails folder
   const images = useMemo(() => [
-    "/image-trails/FubuMiComet image 9.webp",
-    "/image-trails/MiComet image 3.webp",
-    "/image-trails/MiComet image 7.webp",
-    "/image-trails/MiComet image 10.webp",
     "/image-trails/Suichan image 4.webp",
     "/image-trails/Suichan image 5.webp",
     "/image-trails/Suichan image 6.webp",
