@@ -33,7 +33,7 @@ const ProjectSection: React.FC = () => {
       id: 2,
       title: 'Weather Dashboard',
       description: 'Beautiful weather visualization with detailed forecasts',
-      image: 'https://images.unsplash.com/photo-1592210454359-9043fae6d5b3?w=800&h=600&fit=crop',
+      image: 'https://images.unsplash.com/photo-1599424405976-9b123b6bdf17?w=800&h=600&fit=crop',
       link: '#'
     },
     {
@@ -56,15 +56,12 @@ const ProjectSection: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 py-20 px-4">
+    <section className="min-h-screen bg-gray-50 py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Explore my latest work and creative solutions
-          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -72,41 +69,22 @@ const ProjectSection: React.FC = () => {
           <div className="order-2 lg:order-1">
             <div
               style={{ height: '600px', position: 'relative' }}
-              className="bg-black/20 backdrop-blur-sm rounded-2xl p-4 border border-white/10"
             >
               <FlowingMenu
                 items={flowingMenuItems}
+                onProjectHover={handleProjectHover}
               />
             </div>
           </div>
 
-          {/* Right side - Project Image and Details */}
+          {/* Right side - Project Image Only */}
           <div className="order-1 lg:order-2">
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-              <div className="relative bg-black/40 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-                <div className="aspect-video rounded-xl overflow-hidden mb-6">
-                  <img
-                    src={projects[activeProject].image}
-                    alt={projects[activeProject].title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-3">
-                  {projects[activeProject].title}
-                </h3>
-                <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                  {projects[activeProject].description}
-                </p>
-                <div className="flex gap-4">
-                  <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-200">
-                    View Project
-                  </button>
-                  <button className="px-6 py-3 bg-white/10 text-white rounded-lg font-semibold hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-200">
-                    Learn More
-                  </button>
-                </div>
-              </div>
+            <div className="relative group h-[600px]">
+              <img
+                src={projects[activeProject].image}
+                alt={projects[activeProject].title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
           </div>
         </div>

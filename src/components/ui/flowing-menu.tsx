@@ -9,21 +9,22 @@ interface MenuItemProps {
 
 interface FlowingMenuProps {
   items?: MenuItemProps[];
+  onProjectHover?: (index: number) => void;
 }
 
-const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [] }) => {
+const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [], onProjectHover }) => {
   return (
     <div className="w-full h-full overflow-hidden">
       <nav className="flex flex-col h-full m-0 p-0">
         {items.map((item, idx) => (
-          <MenuItem key={idx} {...item} />
+          <MenuItem key={idx} {...item} onHover={() => onProjectHover && onProjectHover(idx)} />
         ))}
       </nav>
     </div>
   );
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
+const MenuItem: React.FC<MenuItemProps & { onHover?: () => void }> = ({ link, text, image, onHover }) => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
@@ -45,6 +46,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
     tl.set(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' })
       .set(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' })
       .to([marqueeRef.current, marqueeInnerRef.current], { y: '0%' });
+    
+    // Call the onHover callback if provided
+    if (onHover) onHover();
   };
 
   const handleMouseLeave = (ev: React.MouseEvent<HTMLAnchorElement>) => {
@@ -61,9 +65,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
   const repeatedMarqueeContent = React.useMemo(() => {
     return Array.from({ length: 4 }).map((_, idx) => (
       <React.Fragment key={idx}>
-        <span className="text-[#060010] uppercase font-normal text-[4vh] leading-[1.2] p-[1vh_1vw_0]">{text}</span>
+        <span className="text-gray-900 uppercase font-normal text-[2.5vh] leading-[1.2] p-[1vh_1vw_0]">{text}</span>
         <div
-          className="w-[200px] h-[7vh] my-[2em] mx-[2vw] p-[1em_0] rounded-[50px] bg-cover bg-center"
+          className="w-[200px] h-[5vh] my-[2em] mx-[2vw] p-[1em_0] rounded-[50px] bg-cover bg-center"
           style={{ backgroundImage: `url(${image})` }}
         />
       </React.Fragment>
@@ -71,9 +75,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
   }, [text, image]);
 
   return (
-    <div className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_#fff]" ref={itemRef}>
+    <div className="flex-1 relative overflow-hidden text-center border-b border-gray-200" ref={itemRef}>
       <a
-        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-white text-[4vh] hover:text-[#060010] focus:text-white focus-visible:text-[#060010]"
+        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-gray-900 text-[2.5vh] hover:text-gray-600 focus:text-gray-900 focus-visible:text-gray-600"
         href={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -81,7 +85,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ link, text, image }) => {
         {text}
       </a>
       <div
-        className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-white translate-y-[101%]"
+        className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none bg-gray-50 translate-y-[101%]"
         ref={marqueeRef}
       >
         <div className="h-full w-[200%] flex" ref={marqueeInnerRef}>
