@@ -3,6 +3,7 @@ import '@/styles/globals.css'
 import { ThemeProvider } from 'next-themes'
 import { Comfortaa, Nunito, Space_Grotesk, Varela_Round, Roboto_Flex } from 'next/font/google'
 import { LenisProvider } from '@/components/providers/lenis-provider'
+import Navbar from '@/components/ui/navbar'
 
 const comfortaa = Comfortaa({
   subsets: ['latin'],
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body className={`${comfortaa.variable} ${nunito.variable} ${spaceGrotesk.variable} ${varelaRound.variable} ${robotoFlex.variable} bg-white font-nunito`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <LenisProvider>
+            <Navbar />
             {children}
           </LenisProvider>
         </ThemeProvider>

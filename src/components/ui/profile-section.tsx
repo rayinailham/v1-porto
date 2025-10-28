@@ -54,8 +54,7 @@ export function ProfileSection() {
         </p>
         
         <p className="text-xs leading-relaxed"> 
-          I can use expressjs, honojs, nextjs 
-          <br />and currently learning Go for backend.
+          I'm familiar with developing frontend, backend, databases, and microservices ecosystems.
           <br />I also clip VTuber for fun using Premiere Pro!
           <br />
           <br />Follow my social media below.
