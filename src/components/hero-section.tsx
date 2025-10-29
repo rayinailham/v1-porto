@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect, useMemo } from "react"
+import Image from "next/image"
 import { ScrollIndicator } from '@/components/ui/scroll-indicator'
 import { AnimatedCornerBraces } from '@/components/ui/animated-corner-braces'
 import { ImageTrail } from '@/components/ui/image-trail'
@@ -21,7 +22,7 @@ const HeroSection = () => {
   // Preload images for smoother performance
   useEffect(() => {
     images.forEach((src) => {
-      const img = new Image()
+      const img = document.createElement('img')
       img.src = src
     })
   }, [images])
@@ -45,12 +46,14 @@ const HeroSection = () => {
               key={index}
               className="flex relative overflow-hidden w-28 h-28 rounded-xl opacity-80 select-none pointer-events-none"
             >
-              <img
+              <Image
                 src={url}
                 alt={`Trail image ${index + 1}`}
                 className="object-cover absolute inset-0 select-none pointer-events-none"
                 draggable={false}
                 loading="eager"
+                fill
+                sizes="(max-width: 768px) 112px, 112px"
               />
             </div>
           ))}

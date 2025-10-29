@@ -54,7 +54,7 @@ export function ProfileSection() {
         </p>
         
         <p className="text-xs leading-relaxed"> 
-          I'm familiar with developing frontend, backend, databases, and microservices ecosystems.
+          I&apos;m familiar with developing frontend, backend, databases, and microservices ecosystems.
           <br />I also clip VTuber for fun using Premiere Pro!
           <br />
           <br />Follow my social media below.

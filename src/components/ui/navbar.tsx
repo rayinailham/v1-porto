@@ -20,7 +20,7 @@ const Navbar = () => {
     <motion.nav
       className="fixed top-0 left-0 right-0 flex justify-center z-50 transition-all duration-300 ease-in-out"
       style={{
-        paddingTop: scrolled ? '20px' : '10px',
+        paddingTop: scrolled ? '15px' : '5px',
       }}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ const Navbar = () => {
               : 'bg-transparent'
           }`}
           style={{
-            padding: scrolled ? '16px 32px' : '12px 24px',
+            padding: scrolled ? '12px 24px' : '12px 28px',
           }}
         >
         <div className="flex items-center justify-between">
