@@ -88,3 +88,73 @@ p {
 .font-varela-round {
   letter-spacing: 0.05em;
 }
+
+/* Font hierarchy system */
+@layer utilities {
+  /* Font size hierarchy */
+  .text-hero {
+    @apply text-6xl md:text-8xl lg:text-9xl;
+  }
+  
+  .text-section {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  .text-card {
+    @apply text-2xl;
+  }
+  
+  .text-body {
+    @apply text-base;
+  }
+  
+  .text-caption {
+    @apply text-sm;
+  }
+  
+  .text-micro {
+    @apply text-xs;
+  }
+  
+  /* Font weight hierarchy */
+  .font-weight-hero {
+    @apply font-bold;
+  }
+  
+  .font-weight-heading {
+    @apply font-semibold;
+  }
+  
+  .font-weight-body {
+    @apply font-normal;
+  }
+  
+  .font-weight-caption {
+    @apply font-medium;
+  }
+  
+  /* Combined font classes for specific use cases */
+  .hero-heading {
+    @apply font-comfortaa text-hero font-weight-hero;
+  }
+  
+  .section-heading {
+    @apply font-space-grotesk text-section font-weight-heading;
+  }
+  
+  .card-heading {
+    @apply font-space-grotesk text-card font-weight-heading;
+  }
+  
+  .body-text {
+    @apply font-nunito text-body font-weight-body;
+  }
+  
+  .caption-text {
+    @apply font-varela-round text-caption font-weight-caption;
+  }
+  
+  .tech-label {
+    @apply font-roboto-flex text-micro font-weight-caption;
+  }
+}

@@ -36,7 +36,7 @@ const robotoFlex = Roboto_Flex({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio - [Your Name]',
+  title: 'Portfolio - Rayin993',
   description: 'Full Stack Developer & Creative Problem Solver',
 }
 

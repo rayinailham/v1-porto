@@ -99,21 +99,29 @@ export default function Home() {
       <section id="contact" className="h-screen bg-gray-50 relative">
         <div className="container mx-auto h-full px-4">
           <div className="h-full flex flex-col justify-center items-center">
-            <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
+            <h2 className="section-heading text-center mb-12 text-gray-900">
               Get In Touch
             </h2>
             <div className="max-w-2xl mx-auto text-center">
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="body-text text-xl text-gray-600 mb-8">
                 I&#39;m always interested in hearing about new opportunities and exciting projects.
                 Feel free to reach out if you&#39;d like to collaborate!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+                <a
+                  href="mailto:rayinailham@example.com"
+                  className="font-varela-round font-weight-heading px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors text-center"
+                >
                   Send Email
-                </button>
-                <button className="px-8 py-3 border border-gray-900 text-gray-900 rounded-lg font-semibold hover:bg-gray-900 hover:text-white transition-colors">
-                  LinkedIn
-                </button>
+                </a>
+                <a
+                  href="https://wa.me/6287814745115"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-varela-round font-weight-heading px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-center"
+                >
+                  WhatsApp
+                </a>
               </div>
             </div>
           </div>

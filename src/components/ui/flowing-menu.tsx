@@ -128,14 +128,14 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick, onH
                       }
                     }}
                   />
-                  <span className="text-xs text-gray-700 font-medium whitespace-nowrap">{tech.name}</span>
+                  <span className="tech-label text-gray-700 whitespace-nowrap">{tech.name}</span>
                 </div>
               );
             })}
           </div>
           
           {/* Project Name */}
-          <span className="text-gray-900 uppercase font-semibold text-[3vh] leading-[1.2] mx-6">{name}</span>
+          <span className="font-space-grotesk text-gray-900 uppercase font-weight-heading text-[3vh] leading-[1.2] mx-6">{name}</span>
           
           {/* Right Tech Stack */}
           <div className="flex items-center gap-2">
@@ -162,7 +162,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick, onH
                       }
                     }}
                   />
-                  <span className="text-xs text-gray-700 font-medium whitespace-nowrap">{tech.name}</span>
+                  <span className="tech-label text-gray-700 whitespace-nowrap">{tech.name}</span>
                 </div>
               );
             })}
@@ -175,7 +175,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick, onH
   return (
     <div className="flex-1 relative overflow-hidden text-center shadow-[0_-1px_0_0_#e5e7eb]" ref={itemRef}>
       <a
-        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-semibold text-gray-900 text-[3.5vh] hover:text-blue-600 focus:text-blue-600 focus-visible:text-blue-600 transition-colors"
+        className="flex items-center justify-center h-full relative cursor-pointer uppercase no-underline font-space-grotesk font-weight-heading text-gray-900 text-[3.5vh] hover:text-blue-600 focus:text-blue-600 focus-visible:text-blue-600 transition-colors"
         href={link || '#'}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

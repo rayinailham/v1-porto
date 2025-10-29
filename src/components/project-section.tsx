@@ -82,7 +82,7 @@ const ProjectSection: React.FC = () => {
             delay: 0.1
           }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          <h2 className="section-heading text-gray-900">
             Featured Projects
           </h2>
         </motion.div>
@@ -136,7 +136,7 @@ const ProjectSection: React.FC = () => {
                 
                 {/* Project Name - Fixed Height */}
                 <div className="mb-2 min-h-[3rem] flex items-start">
-                  <h3 className="cursor-target text-2xl font-bold text-gray-900 inline-block">
+                  <h3 className="cursor-target card-heading text-gray-900 inline-block">
                     {selectedProject.name}
                   </h3>
                 </div>
@@ -146,7 +146,7 @@ const ProjectSection: React.FC = () => {
                   {selectedProject.role.split(',').map((role, index) => (
                     <span
                       key={index}
-                      className="cursor-target text-lg text-gray-600 inline-block"
+                      className="cursor-target font-nunito text-lg text-gray-600 inline-block"
                     >
                       {role.trim()}
                       {index < selectedProject.role.split(',').length - 1 && ','}
@@ -156,13 +156,13 @@ const ProjectSection: React.FC = () => {
                 
                 {/* Description - Flexible but with scroll if needed */}
                 <div className="flex-grow mb-4 overflow-y-auto">
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="body-text text-gray-700 leading-relaxed">
                     {selectedProject.description}
                   </p>
                 </div>
                 
                 {/* Date - Fixed Height */}
-                <p className="text-sm text-gray-500 mb-4 min-h-[1.25rem] flex items-center">
+                <p className="caption-text text-gray-500 mb-4 min-h-[1.25rem] flex items-center">
                   {selectedProject.date}
                 </p>
                 
@@ -184,14 +184,14 @@ const ProjectSection: React.FC = () => {
                           target.style.display = 'none';
                         }}
                       />
-                      <span className="text-xs text-gray-700 font-medium">{tech.name}</span>
+                      <span className="tech-label text-gray-700">{tech.name}</span>
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
               <div className="h-full flex items-center justify-center">
-                <p className="text-gray-500 text-lg">Select a project to view details</p>
+                <p className="font-nunito text-gray-500 text-lg">Select a project to view details</p>
               </div>
             )}
           </motion.div>

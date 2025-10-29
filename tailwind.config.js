@@ -17,6 +17,7 @@ module.exports = {
         'nunito': ['var(--font-nunito)'],
         'space-grotesk': ['var(--font-space-grotesk)'],
         'varela-round': ['var(--font-varela-round)'],
+        'roboto-flex': ['var(--font-roboto-flex)'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

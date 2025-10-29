@@ -44,43 +44,43 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className={`font-bold transition-colors duration-300 ${
+            <h1 className={`font-comfortaa font-weight-heading transition-colors duration-300 ${
               scrolled ? 'text-gray-900 text-2xl' : 'text-gray-900 text-2xl'
             }`}>
-              Rayin
+              Rayin993
             </h1>
           </div>
 
           {/* Section Links */}
           <div className="flex items-center space-x-8">
-            <a 
-              href="#hero" 
-              className={`transition-colors duration-300 hover:text-gray-600 ${
-                scrolled ? 'text-gray-700 text-base' : 'text-gray-800 text-base'
+            <a
+              href="#hero"
+              className={`font-nunito body-text transition-colors duration-300 hover:text-gray-600 ${
+                scrolled ? 'text-gray-700' : 'text-gray-800'
               }`}
             >
               Home
             </a>
             <a
               href="#about"
-              className={`transition-colors duration-300 hover:text-gray-600 ${
-                scrolled ? 'text-gray-700 text-base' : 'text-gray-800 text-base'
+              className={`font-nunito body-text transition-colors duration-300 hover:text-gray-600 ${
+                scrolled ? 'text-gray-700' : 'text-gray-800'
               }`}
             >
               About
             </a>
             <a
               href="#projects"
-              className={`transition-colors duration-300 hover:text-gray-600 ${
-                scrolled ? 'text-gray-700 text-base' : 'text-gray-800 text-base'
+              className={`font-nunito body-text transition-colors duration-300 hover:text-gray-600 ${
+                scrolled ? 'text-gray-700' : 'text-gray-800'
               }`}
             >
               Projects
             </a>
             <a
               href="#contact"
-              className={`transition-colors duration-300 hover:text-gray-600 ${
-                scrolled ? 'text-gray-700 text-base' : 'text-gray-800 text-base'
+              className={`font-nunito body-text transition-colors duration-300 hover:text-gray-600 ${
+                scrolled ? 'text-gray-700' : 'text-gray-800'
               }`}
             >
               Contact
@@ -90,12 +90,12 @@ const Navbar = () => {
           {/* Contact Me Button */}
           <div className="flex-shrink-0">
             <button
-              className={`px-4 py-2 rounded-full transition-all duration-300 ${
+              className={`font-varela-round caption-text px-4 py-2 rounded-full transition-all duration-300 ${
                 scrolled
-                  ? 'bg-gray-900 text-white text-sm hover:bg-gray-800'
-                  : 'bg-gray-900 text-white text-sm hover:bg-gray-800'
+                  ? 'bg-gray-900 text-white hover:bg-gray-800'
+                  : 'bg-gray-900 text-white hover:bg-gray-800'
               }`}
-              onClick={() => window.location.href = '#contact'}
+              onClick={() => window.open('https://wa.me/6287814745115', '_blank')}
             >
               Contact Me
             </button>
