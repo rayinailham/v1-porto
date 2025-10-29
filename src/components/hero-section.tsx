@@ -95,7 +95,7 @@ const HeroSection = () => {
       {/* Hero Content */}
       <div className="relative z-10 text-center pointer-events-none">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold select-none cursor-default bg-clip-text text-transparent bg-gradient-to-r from-neutral-950 to-neutral-500 mb-6">
-          Rayin
+          Rayina Ilham
         </h1>
         <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto cursor-default">
           Creative developer crafting exceptional digital experiences
