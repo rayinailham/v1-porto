@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from "next/image";
 import FlowingMenu from '@/components/ui/flowing-menu';
+import TargetCursor from '@/components/ui/target-cursor';
 import { projectsData, Project } from '@/data/projects';
 
 const ProjectSection: React.FC = () => {
@@ -45,7 +46,7 @@ const ProjectSection: React.FC = () => {
           </div>
           
           {/* Right Column - Project Details */}
-          <div className="h-full bg-white rounded-lg p-4 overflow-hidden">
+          <div className="project-details-container h-full bg-white rounded-lg p-4 overflow-hidden">
             {selectedProject ? (
               <div className="h-full flex flex-col">
                 {/* Project Image - Fixed Height */}
@@ -60,14 +61,24 @@ const ProjectSection: React.FC = () => {
                 </div>
                 
                 {/* Project Name - Fixed Height */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 min-h-[3rem] flex items-center">
-                  {selectedProject.name}
-                </h3>
+                <div className="mb-2 min-h-[3rem] flex items-start">
+                  <h3 className="cursor-target text-2xl font-bold text-gray-900 inline-block">
+                    {selectedProject.name}
+                  </h3>
+                </div>
                 
-                {/* Role - Fixed Height */}
-                <p className="text-lg text-gray-600 mb-4 min-h-[1.5rem] flex items-center">
-                  {selectedProject.role}
-                </p>
+                {/* Role - Split into individual items */}
+                <div className="mb-4 min-h-[1.5rem] flex flex-wrap items-center gap-2">
+                  {selectedProject.role.split(',').map((role, index) => (
+                    <span
+                      key={index}
+                      className="cursor-target text-lg text-gray-600 inline-block"
+                    >
+                      {role.trim()}
+                      {index < selectedProject.role.split(',').length - 1 && ','}
+                    </span>
+                  ))}
+                </div>
                 
                 {/* Description - Flexible but with scroll if needed */}
                 <div className="flex-grow mb-4 overflow-y-auto">
@@ -86,7 +97,7 @@ const ProjectSection: React.FC = () => {
                   {selectedProject.techStack.map((tech, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full flex-shrink-0"
+                      className="cursor-target flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full flex-shrink-0"
                     >
                       <Image
                         src={tech.icon}
@@ -112,6 +123,13 @@ const ProjectSection: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* TargetCursor Component - Only active within project details container */}
+      <TargetCursor
+        targetSelector=".project-details-container .cursor-target"
+        spinDuration={2}
+        hideDefaultCursor={true}
+      />
     </section>
   );
 };
