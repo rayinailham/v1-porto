@@ -2,12 +2,19 @@
 
 import React, { useState } from 'react';
 import Image from "next/image";
+import { motion } from 'framer-motion';
 import FlowingMenu from '@/components/ui/flowing-menu';
 import TargetCursor from '@/components/ui/target-cursor';
 import { projectsData, Project } from '@/data/projects';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const ProjectSection: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(projectsData[0]);
+  
+  // Scroll reveal hooks for different elements
+  const { ref: titleRef, controls: titleControls } = useScrollReveal();
+  const { ref: containerRef, controls: containerControls } = useScrollReveal();
+  const { ref: menuRef, controls: menuControls } = useScrollReveal();
 
   const handleProjectSelect = (projectId: string) => {
     const project = projectsData.find(p => p.id === projectId);
@@ -26,27 +33,94 @@ const ProjectSection: React.FC = () => {
     link: project.link
   }));
 
+  // Animation variants
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+      y: -30
+    },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
+  };
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+      x: 50
+    },
+    visible: {
+      opacity: 1,
+      x: 0
+    }
+  };
+
+  const menuVariants = {
+    hidden: {
+      opacity: 0,
+      x: -50
+    },
+    visible: {
+      opacity: 1,
+      x: 0
+    }
+  };
+
   return (
     <section id="projects" className="min-h-screen bg-gray-50 py-20 px-4 pt-28">
       <div className="max-w-7xl mx-auto h-full">
-        <div className="text-center mb-16">
+        <motion.div
+          ref={titleRef}
+          className="text-center mb-16"
+          initial="hidden"
+          animate={titleControls}
+          variants={titleVariants}
+          transition={{
+            duration: 0.7,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            delay: 0.1
+          }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Featured Projects
           </h2>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-3 gap-8 h-[600px]" style={{ gridTemplateColumns: '3fr 2fr' }}>
           {/* Left Column - Flowing Menu */}
-          <div className="h-full">
+          <motion.div
+            ref={menuRef}
+            className="h-full"
+            initial="hidden"
+            animate={menuControls}
+            variants={menuVariants}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.46, 0.45, 0.94],
+              delay: 0.2
+            }}
+          >
             <FlowingMenu
               items={menuItems}
               onProjectSelect={handleProjectSelect}
               onProjectHover={handleProjectHover}
             />
-          </div>
+          </motion.div>
           
           {/* Right Column - Project Details */}
-          <div className="project-details-container h-full bg-white rounded-lg p-4 overflow-hidden">
+          <motion.div
+            ref={containerRef}
+            className="project-details-container h-full bg-white rounded-lg p-4 overflow-hidden"
+            initial="hidden"
+            animate={containerControls}
+            variants={containerVariants}
+            transition={{
+              duration: 0.7,
+              ease: [0.25, 0.46, 0.45, 0.94],
+              delay: 0.3
+            }}
+          >
             {selectedProject ? (
               <div className="h-full flex flex-col">
                 {/* Project Image - Fixed Height */}
@@ -93,7 +167,7 @@ const ProjectSection: React.FC = () => {
                 </p>
                 
                 {/* Tech Stack - Fixed Height with scroll if needed */}
-                <div className="max-h-20 overflow-y-auto flex flex-wrap gap-2">
+                <div className="max-h-32 overflow-y-auto flex flex-wrap gap-2">
                   {selectedProject.techStack.map((tech, index) => (
                     <div
                       key={index}
@@ -120,7 +194,7 @@ const ProjectSection: React.FC = () => {
                 <p className="text-gray-500 text-lg">Select a project to view details</p>
               </div>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
       
