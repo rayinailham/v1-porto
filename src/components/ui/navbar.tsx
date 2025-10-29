@@ -20,7 +20,7 @@ const Navbar = () => {
     <motion.nav
       className="fixed top-0 left-0 right-0 flex justify-center z-50 transition-all duration-300 ease-in-out"
       style={{
-        paddingTop: scrolled ? '30px' : '20px',
+        paddingTop: scrolled ? '20px' : '10px',
       }}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
