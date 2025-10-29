@@ -1,0 +1,7 @@
+# Handle static assets
+/image-trails/* /image-trails/:splat 200
+/projects/* /projects/:splat 200
+/docs/* /docs/:splat 200
+
+# Fallback for SPA routing
+/* /index.html 200

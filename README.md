@@ -27,10 +27,20 @@ Project ini sudah siap untuk di-deploy ke Netlify dengan konfigurasi yang telah 
 ### Konfigurasi Deployment
 
 Project ini sudah dilengkapi dengan:
-- ✅ `netlify.toml` - Konfigurasi build Netlify
+- ✅ `netlify.toml` - Konfigurasi build Netlify dengan image optimization
+- ✅ `public/_redirects` - Handle static assets routing
 - ✅ `.github/workflows/deploy.yml` - GitHub Actions untuk auto-deploy
 - ✅ Static export configuration di `next.config.js`
+- ✅ Image optimization untuk WebP files
 - ✅ Build yang berhasil dengan `npm run build`
+
+### Image Assets Configuration
+
+✅ **Masalah image sudah diatasi:**
+- Ditambahkan `images: { unoptimized: true }` di `next.config.js`
+- Konfigurasi headers untuk WebP files di `netlify.toml`
+- Redirect rules untuk static assets di `public/_redirects`
+- Semua image di `public/image-trails/` dan `public/projects/` akan ter-serve dengan benar
 
 ### Fitur yang Sudah Siap
 
@@ -41,6 +51,7 @@ Project ini sudah dilengkapi dengan:
 - ✅ Responsive design
 - ✅ Optimized build (193 kB first load JS)
 - ✅ Static generation untuk performa optimal
+- ✅ Image assets yang proper untuk deployment
 
 ## 📁 Struktur Folder
 
@@ -52,6 +63,11 @@ src/
 ├── hooks/           # Custom React hooks
 ├── lib/             # Utilitas dan helper functions
 └── styles/          # File CSS global
+
+public/
+├── image-trails/    # Image assets untuk hero section
+├── projects/        # Project preview images
+└── _redirects       # Netlify redirect rules
 ```
 
 ## 🛠️ Teknologi
@@ -84,3 +100,4 @@ npm run lint
 - Project ini menggunakan static export, cocok untuk deployment di Netlify, Vercel, atau hosting static lainnya
 - Semua assets sudah dioptimalkan untuk production
 - Build berhasil menghasilkan static files di folder `out/`
+- Image assets akan ter-serve dengan benar di Netlify deployment

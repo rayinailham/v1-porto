@@ -3,6 +3,9 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   distDir: 'out',
+  images: {
+    unoptimized: true
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
