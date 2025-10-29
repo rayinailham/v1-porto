@@ -43,12 +43,12 @@ export function ProfileSection() {
       </div>
       
       {/* Name */}
-      <h3 className="text-xl font-semibold text-center mb-4 text-black">
+      <h3 className="text-xl font-semibold text-center mb-4 text-black font-nunito">
         Rayina Ilham
       </h3>
       
       {/* Bio */}
-      <div className="text-sm text-gray-800 text-center space-y-4 px-2">
+      <div className="text-sm text-gray-800 text-center space-y-4 px-2 font-nunito">
         <p className="leading-relaxed">
           <span className="font-medium">I love designing</span>, from products, interfaces to systems!
         </p>

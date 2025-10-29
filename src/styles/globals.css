@@ -84,9 +84,9 @@ p {
   line-height: 1.7;
 }
 
-/* Super comfy for marquee text */
-.font-varela-round {
-  letter-spacing: 0.05em;
+/* Super comfy for special text */
+.font-space-grotesk {
+  letter-spacing: 0.02em;
 }
 
 /* Font hierarchy system */
@@ -135,7 +135,7 @@ p {
   
   /* Combined font classes for specific use cases */
   .hero-heading {
-    @apply font-comfortaa text-hero font-weight-hero;
+    @apply font-space-grotesk text-hero font-weight-hero;
   }
   
   .section-heading {
@@ -151,10 +151,10 @@ p {
   }
   
   .caption-text {
-    @apply font-varela-round text-caption font-weight-caption;
+    @apply font-nunito text-caption font-weight-caption;
   }
   
   .tech-label {
-    @apply font-roboto-flex text-micro font-weight-caption;
+    @apply font-nunito text-micro font-weight-caption;
   }
 }

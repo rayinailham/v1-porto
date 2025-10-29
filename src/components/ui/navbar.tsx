@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className={`font-comfortaa font-weight-heading transition-colors duration-300 ${
+            <h1 className={`font-space-grotesk font-weight-heading transition-colors duration-300 ${
               scrolled ? 'text-gray-900 text-2xl' : 'text-gray-900 text-2xl'
             }`}>
               Rayin993
@@ -90,7 +90,7 @@ const Navbar = () => {
           {/* Contact Me Button */}
           <div className="flex-shrink-0">
             <button
-              className={`font-varela-round caption-text px-4 py-2 rounded-full transition-all duration-300 ${
+              className={`font-nunito caption-text px-4 py-2 rounded-full transition-all duration-300 ${
                 scrolled
                   ? 'bg-gray-900 text-white hover:bg-gray-800'
                   : 'bg-gray-900 text-white hover:bg-gray-800'
