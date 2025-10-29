@@ -15,22 +15,25 @@ interface MenuItemProps {
   techStack: TechStack[];
   link?: string;
   onClick?: () => void;
+  onHover?: () => void;
 }
 
 interface FlowingMenuProps {
   items?: MenuItemProps[];
   onProjectSelect?: (projectId: string) => void;
+  onProjectHover?: (projectId: string) => void;
 }
 
-const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [], onProjectSelect }) => {
+const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [], onProjectSelect, onProjectHover }) => {
   return (
     <div className="w-full h-full overflow-hidden bg-white">
       <nav className="flex flex-col h-full m-0 p-0">
         {items.map((item, idx) => (
-          <MenuItem 
-            key={idx} 
-            {...item} 
+          <MenuItem
+            key={idx}
+            {...item}
             onClick={() => onProjectSelect?.(item.id)}
+            onHover={() => onProjectHover?.(item.id)}
           />
         ))}
       </nav>
@@ -38,7 +41,7 @@ const FlowingMenu: React.FC<FlowingMenuProps> = ({ items = [], onProjectSelect }
   );
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick, onHover }) => {
   const itemRef = React.useRef<HTMLDivElement>(null);
   const marqueeRef = React.useRef<HTMLDivElement>(null);
   const marqueeInnerRef = React.useRef<HTMLDivElement>(null);
@@ -60,6 +63,9 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick }) =
     tl.set(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' })
       .set(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' })
       .to([marqueeRef.current, marqueeInnerRef.current], { y: '0%' });
+    
+    // Trigger hover callback
+    onHover?.();
   };
 
   const handleMouseLeave = (ev: React.MouseEvent<HTMLAnchorElement>) => {

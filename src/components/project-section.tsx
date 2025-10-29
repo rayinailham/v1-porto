@@ -13,6 +13,11 @@ const ProjectSection: React.FC = () => {
     setSelectedProject(project || null);
   };
 
+  const handleProjectHover = (projectId: string) => {
+    const project = projectsData.find(p => p.id === projectId);
+    setSelectedProject(project || null);
+  };
+
   const menuItems = projectsData.map(project => ({
     id: project.id,
     name: project.name,
@@ -35,6 +40,7 @@ const ProjectSection: React.FC = () => {
             <FlowingMenu
               items={menuItems}
               onProjectSelect={handleProjectSelect}
+              onProjectHover={handleProjectHover}
             />
           </div>
           
