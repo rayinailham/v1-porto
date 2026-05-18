@@ -74,9 +74,8 @@ const MenuItem: React.FC<MenuItemProps> = ({ name, techStack, link, onClick, onH
     const edge = findClosestEdge(ev.clientX - rect.left, ev.clientY - rect.top, rect.width, rect.height);
 
     const tl = gsap.timeline({ defaults: animationDefaults }) as gsap.core.Timeline;
-    tl.to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }).to(marqueeInnerRef.current, {
-      y: edge === 'top' ? '101%' : '-101%'
-    });
+    tl.to(marqueeRef.current, { y: edge === 'top' ? '-101%' : '101%' }, 0)
+      .to(marqueeInnerRef.current, { y: edge === 'top' ? '101%' : '-101%' }, 0);
   };
 
   const handleClick = (e: React.MouseEvent) => {

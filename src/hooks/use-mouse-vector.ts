@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState, useCallback } from "react"
+import { RefObject, useEffect, useRef, useState, useCallback } from "react"
 
 export const useMouseVector = (
   containerRef?: RefObject<HTMLElement | SVGElement>,
@@ -6,9 +6,10 @@ export const useMouseVector = (
 ) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [vector, setVector] = useState({ dx: 0, dy: 0 })
+  const positionRef = useRef({ x: 0, y: 0 })
 
   const updatePosition = useCallback((x: number, y: number) => {
-    let newX, newY
+    let newX: number, newY: number
 
     if (containerRef && containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect()
@@ -19,16 +20,15 @@ export const useMouseVector = (
       newY = y
     }
 
-    // Calculate the movement vector
-    const dx = newX - position.x
-    const dy = newY - position.y
+    const dx = newX - positionRef.current.x
+    const dy = newY - positionRef.current.y
 
+    positionRef.current = { x: newX, y: newY }
     setVector({ dx, dy })
     setPosition({ x: newX, y: newY })
-  }, [containerRef, position.x, position.y])
+  }, [containerRef])
 
   useEffect(() => {
-    // Don't set up listeners if not active
     if (!isActive) return
 
     const handleMouseMove = (ev: MouseEvent) => {
@@ -40,7 +40,6 @@ export const useMouseVector = (
       updatePosition(touch.clientX, touch.clientY)
     }
 
-    // Listen for both mouse and touch events
     window.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("touchmove", handleTouchMove)
 
@@ -50,9 +49,9 @@ export const useMouseVector = (
     }
   }, [isActive, updatePosition])
 
-  // Reset position and vector when inactive
   useEffect(() => {
     if (!isActive) {
+      positionRef.current = { x: 0, y: 0 }
       setPosition({ x: 0, y: 0 })
       setVector({ dx: 0, dy: 0 })
     }
